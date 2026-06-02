@@ -52,7 +52,7 @@ export default function LivePicks() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState("all");
-  const [minSize, setMinSize] = useState(50);
+  const [minSize, setMinSize] = useState(0);
   const [sort, setSort] = useState("recent");
   const [search, setSearch] = useState("");
   const [watchlist, setWatchlist] = useState([]);
@@ -80,16 +80,8 @@ export default function LivePicks() {
             if (!r.ok) return [];
             const raw = await r.json();
             const arr = Array.isArray(raw) ? raw : raw?.data || [];
-            return arr
-              .filter((a) => {
-                const side = (a.side || "").toString().toUpperCase();
-                const type = (a.type || "").toString().toUpperCase();
-                // Only show entries: BUY side, or TRADE/PURCHASE type that isn't a SELL/REDEEM
-                const isBuy = side === "BUY" || type === "BUY" || type === "PURCHASE";
-                const isSell = side === "SELL" || type === "SELL" || type === "REDEEM" || type === "MERGE";
-                return isBuy && !isSell;
-              })
-              .map((a, i) => ({
+            if (arr.length > 0) console.log("[CopyTrade] activity sample:", arr[0]);
+            return arr.map((a, i) => ({
                 id: `${w.proxyWallet}-${a.transactionHash || a.conditionId || i}`,
                 proxyWallet: w.proxyWallet,
                 userName: a.name || w.userName || "",
