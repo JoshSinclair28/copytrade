@@ -103,9 +103,6 @@ export default function LivePicks() {
       <Head>
         <title>Live Picks</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
       <style>{`*{box-sizing:border-box}body{margin:0;background:#07070a;color:#eee;font-family:'Space Grotesk',sans-serif}.nav-link{padding:6px 12px;color:#777;text-decoration:none;border-radius:8px;font-weight:700}.nav-link.active{color:#fff;background:rgba(255,255,255,.08)}`}</style>
       <nav style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(7,7,10,.9)", borderBottom: "1px solid rgba(255,255,255,.07)", backdropFilter: "blur(10px)" }}><div style={{ maxWidth: 1000, margin: "0 auto", padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 28, height: 28, borderRadius: 7, background: "linear-gradient(135deg,#F5C842,#F97316)", display: "grid", placeItems: "center", color: "#000", fontWeight: 900, fontFamily: "'Space Mono', monospace" }}>CT</div><div style={{ fontWeight: 800 }}>CopyTrade</div><Link href="/" className="nav-link">Dashboard</Link><Link href="/live" className="nav-link active">Live Picks</Link><button onClick={load} style={{ marginLeft: "auto", border: "1px solid rgba(255,255,255,.15)", background: "rgba(255,255,255,.04)", color: "#ccc", borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontFamily: "'Space Mono', monospace" }}>Sync</button></div></nav>
